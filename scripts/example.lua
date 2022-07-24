@@ -1,3 +1,5 @@
+
+
 -- metadata about this script
 return {
   name = "Example",
@@ -5,4 +7,3 @@ return {
   version = "1.0.0",
   description = "An example script, does nothing",
 }
-
