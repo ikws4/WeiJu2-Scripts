@@ -1,5 +1,5 @@
 -- metadata about this script
-local script_metadata = {
+script_metadata = {
   name = "Example",
   author = "ikws4",
   version = "1.0.0",
