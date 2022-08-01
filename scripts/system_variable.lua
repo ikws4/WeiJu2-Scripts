@@ -1,7 +1,5 @@
-
-
 -- metadata about this script
-return {
+local script_metadata = {
   name = "System Variable",
   author = "ikws4",
   version = "1.0.0",
