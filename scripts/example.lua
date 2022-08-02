@@ -28,7 +28,7 @@ xp.hook {
   end
 }
 
--- Print all the text to the Console
+-- Remove all the text
 xp.hook {
   class = "android.widget.TextView",
   method = "setText",
@@ -38,7 +38,7 @@ xp.hook {
     "boolean",
     "int",
   },
-  before = function(self, text, type, notify_before, old_len)
-    print(text)
+  replace = function(self, text, type, notify_before, old_len)
+    -- Replace `setText` with empty implementation
   end
 }
