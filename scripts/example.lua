@@ -28,7 +28,7 @@ xp.hook {
   end
 }
 
--- Remove all the text
+-- Change all the text to "WeiJu2"
 xp.hook {
   class = "android.widget.TextView",
   method = "setText",
@@ -38,10 +38,12 @@ xp.hook {
     "boolean",
     "int",
   },
-  replace = function(self, text, type, notify_before, old_len, param)
+  before = function(self, text, type, notify_before, old_len, param)
     --                                                         ^
     --                                                    additional param for change the values
-    -- Replace `setText` with empty implementation
-    param.args[1] = ""
+    -- Reset `text` value
+    param.args[1] = "WeiJu2"
+    --         ^
+    -- Note: Lua index is 1 based
   end
 }
