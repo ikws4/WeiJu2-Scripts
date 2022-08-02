@@ -30,11 +30,11 @@ xp.hook {
 
 -- Remove all the text
 xp.hook {
-  class = "android.view.TextView",
+  class = "android.widget.TextView",
   method = "setText",
   params = {
     "java.lang.CharSequence",
-    "android.view.TextView$BufferType",
+    "android.widget.TextView$BufferType",
     "boolean",
     "int",
   },
