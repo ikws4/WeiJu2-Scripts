@@ -38,7 +38,10 @@ xp.hook {
     "boolean",
     "int",
   },
-  replace = function(self, text, type, notify_before, old_len)
+  replace = function(self, text, type, notify_before, old_len, param)
+    --                                                         ^
+    --                                                    additional param for change the values
     -- Replace `setText` with empty implementation
+    param.args[1] = ""
   end
 }
