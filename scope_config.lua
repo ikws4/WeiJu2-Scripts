@@ -1,4 +1,4 @@
 return {
-	example = "io.ikws4.weiju",
+	example = ".*",
 	system_variable = ".*",
 }
