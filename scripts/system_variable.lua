@@ -62,7 +62,7 @@ local location_classes = {
   "com.baidu.location.BDLocation",    -- BaiDu
 }
 
-for _, calss in ipair(location_classes) do
+for _, calss in ipairs(location_classes) do
   xp.hook {
     class = class,
     method = "getLongitude",
