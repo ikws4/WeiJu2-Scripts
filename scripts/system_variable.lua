@@ -23,7 +23,7 @@ local config = {
 	},
 }
 
-import "android.os.Build"
+local Build = import("android.os.Build")
 
 Build.DEVICE = config.build.device
 Build.PRODUCT = config.build.product
@@ -33,26 +33,30 @@ Build.MANUFACTURER = config.build.brand
 Build.VERSION.RELEASE = config.build.android_version
 
 local location_classes = {
-	"android.location.Location",     -- Android
+	"android.location.Location", -- Android
 	"com.baidu.location.BDLocation", -- Baidu
 }
 
 for _, class in ipairs(location_classes) do
-	xp.hook({
-		class = class,
-		returns = "double",
-		method = "getLongitude",
-		replace = function(this, args)
-			return config.location.longitude
-		end,
-	})
+	local ok, class = pcall(import, class)
+  
+	if ok then
+		xp.hook({
+			class = class,
+			returns = "double",
+			method = "getLongitude",
+			replace = function(this, args)
+				return config.location.longitude
+			end,
+		})
 
-	xp.hook({
-		class = class,
-		returns = "double",
-		method = "getLatitude",
-		replace = function(this, args)
-			return config.location.latitude
-		end,
-	})
+		xp.hook({
+			class = class,
+			returns = "double",
+			method = "getLatitude",
+			replace = function(this, args)
+				return config.location.latitude
+			end,
+		})
+	end
 end
