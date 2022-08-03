@@ -47,7 +47,7 @@ for _, class in ipairs(location_classes) do
 			class = class,
 			returns = double,
 			method = "getLongitude",
-			replace = function(this, args)
+			replace = function(this, params)
 				return config.location.longitude
 			end,
 		}
@@ -56,7 +56,7 @@ for _, class in ipairs(location_classes) do
 			class = class,
 			returns = double,
 			method = "getLatitude",
-			replace = function(this, args)
+			replace = function(this, params)
 				return config.location.latitude
 			end,
 		}

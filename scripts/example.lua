@@ -25,8 +25,10 @@ hook {
   class = Activity,
   returns = void,
   method = "onCreate",
-  params = { Bundle },
-  after = function(this, args)
+  params = {
+    Bundle
+  },
+  after = function(this, params)
     Toast:makeText(this, "Hello, WeiJu2!", Toast.LENGTH_SHORT):show()
     --              ^
     -- Note: `this` is the Activity instance
@@ -44,10 +46,10 @@ hook {
     boolean,      -- nofityBefore
     int,          -- oldLen
   },
-  before = function(this, args)
+  before = function(this, params)
     -- Reset `text` value
-    args[1] = "WeiJu2"
-    --   ^
+    params[1] = "WeiJu2"
+    --     ^
     -- Note: In lua, index is 1 based
   end,
 }
