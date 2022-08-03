@@ -33,6 +33,7 @@ local build_fields = {
 for k, v in pairs(build_fields) do
   xp.set_field {
     class = "android.os.Build",
+    type = "java.lang.String",
     field = k,
     value = v
   }
@@ -40,12 +41,13 @@ end
 
 xp.set_field {
   class = "android.os.Build$VERSION",
+  type = "java.lang.String",
   field = "RELEASE",
   value = android_version,
 }
 
 
-local location_classes = { 
+local location_classes = {
   "android.location.Location",        -- Android
   "com.baidu.location.BDLocation",    -- Baidu
 }
