@@ -9,16 +9,16 @@
 @end
 --]]
 
+-- import primitives(void, int, ...), now you can use them in your script
+require("java_primitive_types")
+
 -- Easy to import any java class and support for private field, method and constructor access
 local Toast = import("android.widget.Toast")
 local Activity = import("android.app.Activity")
 local TextView = import("android.widget.TextView")
 local Bundle = import("android.os.Bundle")
-local void = import("void")
 local CharSequence = import("java.lang.CharSequence")
 local BufferType = import("android.widget.TextView$BufferType")
-local boolean = import("boolean")
-local int = import("int")
 
 -- Make a toast after activity created
 hook {
@@ -40,9 +40,9 @@ hook {
   method = "setText",
   params = {
     CharSequence, -- text
-    BufferType, -- type
-    boolean, -- nofityBefore
-    int, -- oldLen
+    BufferType,   -- type
+    boolean,      -- nofityBefore
+    int,          -- oldLen
   },
   before = function(this, args)
     -- Reset `text` value

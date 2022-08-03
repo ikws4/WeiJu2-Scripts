@@ -9,6 +9,8 @@
 @end
 --]]
 
+require("java_primitive_types")
+
 local config = {
 	build = {
 		device = "coral",
@@ -24,7 +26,6 @@ local config = {
 }
 
 local Build = import("android.os.Build")
-
 Build.DEVICE = config.build.device
 Build.PRODUCT = config.build.product
 Build.MODEL = config.build.model
@@ -33,14 +34,13 @@ Build.MANUFACTURER = config.build.brand
 Build.VERSION.RELEASE = config.build.android_version
 
 local location_classes = {
-	"android.location.Location", -- Android
+	"android.location.Location",     -- Android
 	"com.baidu.location.BDLocation", -- Baidu
 }
 
 
 for _, class in ipairs(location_classes) do
 	local ok, class = pcall(import, class)
-  local double = import("double")
 
 	if ok then
 		hook {
