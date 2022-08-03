@@ -43,6 +43,6 @@ xp.hook {
     -- Reset `text` value
     args[1] = "WeiJu2"
     --   ^
-    -- Note: Lua index is 1 based
+    -- Note: In lua, index is 1 based
   end
 }
