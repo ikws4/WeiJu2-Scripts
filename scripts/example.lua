@@ -20,11 +20,12 @@ xp.hook {
   class = "android.app.Activity",
   method = "onCreate",
   params = {
-    "android.os.Bundle"  
+    "android.os.Bundle"    -- Bundle
   },
-  after = function(self, bundle)
-    -- Here, `self` is the Activity instance
-    Toast:makeText(self, "Hello, WeiJu2!", Toast.LENGTH_SHORT):show()
+  after = function(this, args)
+    Toast:makeText(this, "Hello, WeiJu2!", Toast.LENGTH_SHORT):show()
+    --              ^
+    -- Note: `this` is the Activity instance
   end
 }
 
@@ -33,17 +34,15 @@ xp.hook {
   class = "android.widget.TextView",
   method = "setText",
   params = {
-    "java.lang.CharSequence",
-    "android.widget.TextView$BufferType",
-    "boolean",
-    "int",
+    "java.lang.CharSequence",                -- text
+    "android.widget.TextView$BufferType",    -- type
+    "boolean",                               -- nofityBefore
+    "int",                                   -- oldLen
   },
-  before = function(self, text, type, notify_before, old_len, param)
-    --                                                         ^
-    --                                                    additional param for change the values
+  before = function(self, args)
     -- Reset `text` value
-    param.args[1] = "WeiJu2"
-    --         ^
+    args[1] = "WeiJu2"
+    --   ^
     -- Note: Lua index is 1 based
   end
 }
