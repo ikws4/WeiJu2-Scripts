@@ -65,6 +65,7 @@ local location_classes = {
 for _, class in ipairs(location_classes) do
   xp.hook {
     class = class,
+    returns = "double",
     method = "getLongitude",
     replace = function(this, args)
       return longitude
@@ -73,6 +74,7 @@ for _, class in ipairs(location_classes) do
 
   xp.hook {
     class = class,
+    returns = "double",
     method = "getLatitude",
     replace = function(this, args)
       return latitude
