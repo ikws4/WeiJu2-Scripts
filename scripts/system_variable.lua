@@ -21,41 +21,29 @@ local android_version = "10"
 local longitude = 31.921279
 local latitude = 620.157480
 
-xp.set_field {
-  class = "android.os.Build",
-  field = "DEVICE",
-  value = device,
+
+local build_fields = {
+  DEVICE = device,
+  PRODUCT = product,
+  MODEL = model,
+  BRAND = brand,
+  MANUFACTURER = brand,
 }
 
-xp.set_field {
-  class = "android.os.Build",
-  field = "PRODUCT",
-  value = product,
-}
-
-xp.set_field {
-  class = "android.os.Build",
-  field = "MODEL",
-  value = model,
-}
-
-xp.set_field {
-  class = "android.os.Build",
-  field = "BRAND",
-  value = brand,
-}
-
-xp.set_field {
-  class = "android.os.Build",
-  field = "MANUFACTURER",
-  value = brand,
-}
+for k, v in pairs(build_fields) do
+  xp.set_field {
+    class = "android.os.Build",
+    field = k,
+    value = v
+  }
+end
 
 xp.set_field {
   class = "android.os.Build$VERSION",
   field = "RELEASE",
   value = android_version,
 }
+
 
 local location_classes = { 
   "android.location.Location",        -- Android
