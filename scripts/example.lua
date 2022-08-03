@@ -9,12 +9,8 @@
 @end
 --]]
 
--- Easy to import any java class (support private field, method and constructor access), 
--- remenber this just a syntax sugar, you can desugar it with:
--- ```lua
---   local Toast = luajava.bindClass("android.widget.Toast")
--- ```
-import "android.widget.Toast"
+-- Easy to import any java class and support for private field, method and constructor access
+local Toast = import("android.widget.Toast")
 
 -- Make a toast after activity created
 xp.hook {
@@ -22,7 +18,7 @@ xp.hook {
   returns = "void",
   method = "onCreate",
   params = {
-    "android.os.Bundle"    -- Bundle
+    "android.os.Bundle" -- Bundle
   },
   after = function(this, args)
     Toast:makeText(this, "Hello, WeiJu2!", Toast.LENGTH_SHORT):show()
@@ -37,10 +33,10 @@ xp.hook {
   returns = "void",
   method = "setText",
   params = {
-    "java.lang.CharSequence",                -- text
-    "android.widget.TextView$BufferType",    -- type
-    "boolean",                               -- nofityBefore
-    "int",                                   -- oldLen
+    "java.lang.CharSequence", -- text
+    "android.widget.TextView$BufferType", -- type
+    "boolean", -- nofityBefore
+    "int", -- oldLen
   },
   before = function(self, args)
     -- Reset `text` value
