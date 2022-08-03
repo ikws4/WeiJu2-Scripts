@@ -16,7 +16,6 @@ local TextView = import("android.widget.TextView")
 
 -- Make a toast after activity created
 hook {
-	class = Activity,
   method = Activity.onCreate,
 	after = function(this, args)
 		Toast:makeText(this, "Hello, WeiJu2!", Toast.LENGTH_SHORT):show()
@@ -27,7 +26,6 @@ hook {
 
 -- Change all the text to "WeiJu2"
 hook {
-	class = TextView,
   method = TextView.setText,
 	before = function(self, args)
 		-- Reset `text` value
