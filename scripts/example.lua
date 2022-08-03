@@ -9,13 +9,14 @@
 @end
 --]]
 
--- Easy to import any java class, remenger this just a syntax sugar, you desugar it with:
+-- Easy to import any java class (support private field, method and constructor access), 
+-- remenber this just a syntax sugar, you can desugar it with:
 -- ```lua
 --   local Toast = luajava.bindClass("android.widget.Toast")
 -- ```
 import "android.widget.Toast"
 
--- Make toast when activit created
+-- Make a toast after activity created
 xp.hook {
   class = "android.app.Activity",
   returns = "void",
