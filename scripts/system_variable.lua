@@ -25,12 +25,12 @@ local config = {
 
 import "android.os.Build"
 
-Build.DEVICE = config.device
-Build.PRODUCT = config.product
-Build.MODEL = config.model
-Build.BRAND = config.brand
-Build.MANUFACTURER = config.brand
-Build.VERSION.RELEASE = config.android_version
+Build.DEVICE = config.build.device
+Build.PRODUCT = config.build.product
+Build.MODEL = config.build.model
+Build.BRAND = config.build.brand
+Build.MANUFACTURER = config.build.brand
+Build.VERSION.RELEASE = config.build.android_version
 
 local location_classes = {
 	"android.location.Location",     -- Android
@@ -52,7 +52,7 @@ for _, class in ipairs(location_classes) do
 		returns = "double",
 		method = "getLatitude",
 		replace = function(this, args)
-			return config.loation.latitude
+			return config.location.latitude
 		end,
 	})
 end
