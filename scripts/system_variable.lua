@@ -37,22 +37,28 @@ local location_classes = {
 	"com.baidu.location.BDLocation", -- Baidu
 }
 
+
 for _, class in ipairs(location_classes) do
 	local ok, class = pcall(import, class)
+  local double = import("double")
 
 	if ok then
-    hook {
-      method = class.getLongitude,
-      replace = function(self, args)
-        return config.location.longitude
-      end,
-    }
+		xp.hook {
+			class = class,
+			returns = double,
+			method = "getLongitude",
+			replace = function(this, args)
+				return config.location.longitude
+			end,
+		}
 
-    hook {
-      method = class.getLatitude,
-      replace = function(self, args)
-        return config.location.latitude
-      end,
-    }
+		xp.hook {
+			class = class,
+			returns = double,
+			method = "getLatitude",
+			replace = function(this, args)
+				return config.location.latitude
+			end,
+		}
 	end
 end

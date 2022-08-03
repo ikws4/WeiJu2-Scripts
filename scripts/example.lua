@@ -13,24 +13,41 @@
 local Toast = import("android.widget.Toast")
 local Activity = import("android.app.Activity")
 local TextView = import("android.widget.TextView")
+local Bundle = import("android.os.Bundle")
+local void = import("void")
+local CharSequence = import("java.lang.CharSequence")
+local BufferType = import("android.widget.TextView$BufferType")
+local boolean = import("boolean")
+local int = import("int")
 
 -- Make a toast after activity created
-hook {
-  method = Activity.onCreate,
-	after = function(this, args)
-		Toast:makeText(this, "Hello, WeiJu2!", Toast.LENGTH_SHORT):show()
-		--              ^
-		-- Note: `this` is the Activity instance
-	end,
+xp.hook {
+  class = Activity,
+  returns = void,
+  method = "onCreate",
+  params = { Bundle },
+  after = function(this, args)
+    Toast:makeText(this, "Hello, WeiJu2!", Toast.LENGTH_SHORT):show()
+    --              ^
+    -- Note: `this` is the Activity instance
+  end,
 }
 
 -- Change all the text to "WeiJu2"
-hook {
-  method = TextView.setText,
-	before = function(self, args)
-		-- Reset `text` value
-		args[1] = "WeiJu2"
-		--   ^
-		-- Note: In lua, index is 1 based
-	end,
+xp.hook {
+  class = TextView,
+  returns = void,
+  method = "setText",
+  params = {
+    CharSequence, -- text
+    BufferType, -- type
+    boolean, -- nofityBefore
+    int, -- oldLen
+  },
+  before = function(self, args)
+    -- Reset `text` value
+    args[1] = "WeiJu2"
+    --   ^
+    -- Note: In lua, index is 1 based
+  end,
 }
