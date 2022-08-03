@@ -59,7 +59,7 @@ xp.set_field {
 
 local location_classes = { 
   "android.location.Location",        -- Android
-  "com.baidu.location.BDLocation",    -- BaiDu
+  "com.baidu.location.BDLocation",    -- Baidu
 }
 
 for _, class in ipairs(location_classes) do
