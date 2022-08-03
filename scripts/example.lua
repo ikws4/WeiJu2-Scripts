@@ -18,6 +18,7 @@ import "android.widget.Toast"
 -- Make toast when activit created
 xp.hook {
   class = "android.app.Activity",
+  returns = "void",
   method = "onCreate",
   params = {
     "android.os.Bundle"    -- Bundle
@@ -32,6 +33,7 @@ xp.hook {
 -- Change all the text to "WeiJu2"
 xp.hook {
   class = "android.widget.TextView",
+  returns = "void",
   method = "setText",
   params = {
     "java.lang.CharSequence",                -- text
