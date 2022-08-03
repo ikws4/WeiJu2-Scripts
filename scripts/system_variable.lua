@@ -9,11 +9,17 @@
 @end
 --]]
 
+-- Build Info
 local device = "coral"
 local product = "coral"
 local model = "Pixel 4 XL"
 local brand = "google"
 local android_version = "10"
+
+-- Location
+-- See https://www.latlong.net/
+local longitude = 31.921279
+local latitude = 620.157480
 
 xp.set_field {
   class = "android.os.Build",
@@ -50,3 +56,26 @@ xp.set_field {
   field = "RELEASE",
   value = android_version,
 }
+
+local location_classes = { 
+  "android.location.Location",        -- Android
+  "com.baidu.location.BDLocation",    -- BaiDu
+}
+
+for _, calss in ipair(location_classes) do
+  xp.hook {
+    class = class,
+    method = "getLongitude",
+    replace = function(this, args)
+      return longitude
+    end,
+  }
+
+  xp.hook {
+    class = class,
+    method = "getLatitude",
+    replace = function(this, args)
+      return latitude
+    end,
+  }
+end
