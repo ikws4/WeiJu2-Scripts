@@ -43,7 +43,7 @@ for _, class in ipairs(location_classes) do
   local double = import("double")
 
 	if ok then
-		xp.hook {
+		hook {
 			class = class,
 			returns = double,
 			method = "getLongitude",
@@ -52,7 +52,7 @@ for _, class in ipairs(location_classes) do
 			end,
 		}
 
-		xp.hook {
+		hook {
 			class = class,
 			returns = double,
 			method = "getLatitude",
