@@ -21,7 +21,7 @@ local boolean = import("boolean")
 local int = import("int")
 
 -- Make a toast after activity created
-xp.hook {
+hook {
   class = Activity,
   returns = void,
   method = "onCreate",
@@ -34,7 +34,7 @@ xp.hook {
 }
 
 -- Change all the text to "WeiJu2"
-xp.hook {
+hook {
   class = TextView,
   returns = void,
   method = "setText",
@@ -44,7 +44,7 @@ xp.hook {
     boolean, -- nofityBefore
     int, -- oldLen
   },
-  before = function(self, args)
+  before = function(this, args)
     -- Reset `text` value
     args[1] = "WeiJu2"
     --   ^

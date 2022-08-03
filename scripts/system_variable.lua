@@ -45,7 +45,8 @@ for _, class in ipairs(location_classes) do
 	if ok then
 		hook {
 			class = class,
-      method = { double, "getLongitude" },
+			returns = double,
+			method = "getLongitude",
 			replace = function(this, args)
 				return config.location.longitude
 			end,
@@ -53,7 +54,8 @@ for _, class in ipairs(location_classes) do
 
 		hook {
 			class = class,
-      method = { double, "getLatitude" },
+			returns = double,
+			method = "getLatitude",
 			replace = function(this, args)
 				return config.location.latitude
 			end,
