@@ -3,13 +3,13 @@
   return {
     name = "system_variable",
     author = "ikws4",
-    version = "1.0.0",
+    version = "1.0.1",
     description = "Configing the variables, like phone model, location, default language etc..."
   }
 @end
 --]]
 
-require("java_primitive_types")
+require("java_primitive")
 
 local M = {}
 

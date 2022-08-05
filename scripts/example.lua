@@ -10,7 +10,7 @@
 --]]
 
 -- import primitives(void, int, ...), now you can use them in your script
-require("java_primitive_types")
+require("java_primitive")
 
 local M = {}
 
