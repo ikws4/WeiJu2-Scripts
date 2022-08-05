@@ -9,7 +9,7 @@
 @end
 --]]
 
-require("java_primitive")
+require("java_primitives")
 
 local M = {}
 
