@@ -9,47 +9,37 @@
 @end
 --]]
 
-require("java_primitives")
-
-local M = {}
-
 local config = {
 	build = {
-		device = "coral",
-		product = "coral",
-		model = "Pixel 4 XL",
-		brand = "google",
-		android_version = "10",
+		device = nil,
+		product = nil,
+		model = nil,
+		brand = nil,
+		android_version = nil,
 	},
-	location = { -- See https://www.latlong.net/
-		longitude = 31.921279,
-		latitude = 620.157480,
+	location = { 
+    -- See https://www.latlong.net/
+		longitude = nil,
+		latitude = nil,
 	},
 }
 
-local function deep_extend(target, source)
-	if type(source) ~= "table" then
-		return source
-	end
+local M = {}
 
-	for k, v in pairs(source) do
-		target[k] = deep_extend(target[k], v)
-	end
-
-	return target
-end
 
 M.setup = function(opts)
-	config = deep_extend(config, opts or {})
+  require("java_primitives")
+  
+	config = table.extend(config, opts or {})
 
 	local Build = import("android.os.Build")
 
-	Build.DEVICE = config.build.device
-	Build.PRODUCT = config.build.product
-	Build.MODEL = config.build.model
-	Build.BRAND = config.build.brand
-	Build.MANUFACTURER = config.build.brand
-	Build.VERSION.RELEASE = config.build.android_version
+	Build.DEVICE = config.build.device or Build.DEVICE
+	Build.PRODUCT = config.build.product or Build.PRODUCT
+	Build.MODEL = config.build.model or Build.MODEL
+	Build.BRAND = config.build.brand or Build.BRAND
+	Build.MANUFACTURER = config.build.brand or Build.MANUFACTURER
+	Build.VERSION.RELEASE = config.build.android_version or Build.VERSION.RELEASE
 
 	local location_classes = {
 		"android.location.Location",     -- Android
@@ -60,23 +50,27 @@ M.setup = function(opts)
 		local ok, class = pcall(import, class)
 
 		if ok then
-			hook {
-				class = class,
-				returns = double,
-				method = "getLongitude",
-				replace = function(this, params)
-					return config.location.longitude
-				end,
-			}
+      if config.location.longitude then
+        hook {
+          class = class,
+          returns = double,
+          method = "getLongitude",
+          replace = function(this, params)
+            return config.location.longitude
+          end,
+        }
+      end
 
-			hook {
-				class = class,
-				returns = double,
-				method = "getLatitude",
-				replace = function(this, params)
-					return config.location.latitude
-				end,
-			}
+      if config.location.latitude then
+        hook {
+          class = class,
+          returns = double,
+          method = "getLatitude",
+          replace = function(this, params)
+            return config.location.latitude
+          end,
+        }
+      end
 		end
 	end
 end
