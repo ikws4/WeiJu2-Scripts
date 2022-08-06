@@ -26,10 +26,7 @@ local config = {
 
 local M = {}
 
-
 M.setup = function(opts)
-  require("java_primitives")
-  
 	config = table.extend(config, opts or {})
 
 	local Build = import("android.os.Build")
