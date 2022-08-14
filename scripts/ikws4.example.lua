@@ -34,7 +34,7 @@ M.setup = function(opts)
       returns = void,
       method = "onCreate",
       params = {
-        Bundle
+        Bundle,
       },
       after = function(this, params)
         Toast:makeText(this, config.toast_msg, Toast.LENGTH_SHORT):show()
@@ -52,9 +52,9 @@ M.setup = function(opts)
       method = "setText",
       params = {
         CharSequence, -- text
-        BufferType,   -- type
-        boolean,      -- nofityBefore
-        int,          -- oldLen
+        BufferType, -- type
+        boolean, -- nofityBefore
+        int, -- oldLen
       },
       before = function(this, params)
         -- Reset `text` value

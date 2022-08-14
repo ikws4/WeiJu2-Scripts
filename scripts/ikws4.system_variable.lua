@@ -10,43 +10,43 @@
 --]]
 
 local config = {
-	build = {
-		device = nil,
-		product = nil,
-		model = nil,
-		brand = nil,
-		android_version = nil,
-	},
-	location = { 
+  build = {
+    device = nil,
+    product = nil,
+    model = nil,
+    brand = nil,
+    android_version = nil,
+  },
+  location = {
     -- See https://www.latlong.net/
-		longitude = nil,
-		latitude = nil,
-	},
+    longitude = nil,
+    latitude = nil,
+  },
 }
 
 local M = {}
 
 M.setup = function(opts)
-	config = table.extend(config, opts or {})
+  config = table.extend(config, opts or {})
 
-	local Build = import("android.os.Build")
+  local Build = import("android.os.Build")
 
-	Build.DEVICE = config.build.device or Build.DEVICE
-	Build.PRODUCT = config.build.product or Build.PRODUCT
-	Build.MODEL = config.build.model or Build.MODEL
-	Build.BRAND = config.build.brand or Build.BRAND
-	Build.MANUFACTURER = config.build.brand or Build.MANUFACTURER
-	Build.VERSION.RELEASE = config.build.android_version or Build.VERSION.RELEASE
+  Build.DEVICE = config.build.device or Build.DEVICE
+  Build.PRODUCT = config.build.product or Build.PRODUCT
+  Build.MODEL = config.build.model or Build.MODEL
+  Build.BRAND = config.build.brand or Build.BRAND
+  Build.MANUFACTURER = config.build.brand or Build.MANUFACTURER
+  Build.VERSION.RELEASE = config.build.android_version or Build.VERSION.RELEASE
 
-	local location_classes = {
-		"android.location.Location",     -- Android
-		"com.baidu.location.BDLocation", -- Baidu
-	}
+  local location_classes = {
+    "android.location.Location", -- Android
+    "com.baidu.location.BDLocation", -- Baidu
+  }
 
-	for _, class in ipairs(location_classes) do
-		local ok, class = pcall(import, class)
+  for _, class in ipairs(location_classes) do
+    local ok, class = pcall(import, class)
 
-		if ok then
+    if ok then
       if config.location.longitude then
         hook {
           class = class,
@@ -68,8 +68,8 @@ M.setup = function(opts)
           end,
         }
       end
-		end
-	end
+    end
+  end
 end
 
 return M
