@@ -11,7 +11,7 @@
 
 local config = {
     toast_msg = nil,
-  text = nil,
+    text = nil,
 }
 
 local M = {}
