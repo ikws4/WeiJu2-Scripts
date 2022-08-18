@@ -1,9 +1,9 @@
-name: Stylua CI
+name: Format
 
 on: push
 
 jobs:
-  formmat:
+  postprocessing:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,4 +14,8 @@ jobs:
         uses: JohnnyMorganz/stylua-action@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --check .
+          args: .
+          
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: format with stylua"
