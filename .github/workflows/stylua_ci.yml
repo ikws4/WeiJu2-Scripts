@@ -1,21 +1,17 @@
 name: Stylua CI
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: push
 
 jobs:
   formmat:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clone repo
-      uses: actions/checkout@v3
+      - name: Clone repo
+        uses: actions/checkout@v3
 
-    - name: Format code with stylua
-      uses: JohnnyMorganz/stylua-action@1.0.0
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        args: --check .
+      - name: Format code with stylua
+        uses: JohnnyMorganz/stylua-action@1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: --check .
