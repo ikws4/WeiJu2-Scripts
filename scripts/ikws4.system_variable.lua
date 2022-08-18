@@ -121,7 +121,7 @@ M.setup = function(opts)
         if config.display.language then
           local String = import("java.lang.String")
           local Locale = import("java.util.Locale")
-          
+
           local country_city = config.display.language:split("-")
           local locale = Locale(country_city[1], country_city[2])
           Locale:setDefault(locale)
