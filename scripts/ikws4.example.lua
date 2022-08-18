@@ -10,7 +10,7 @@
 --]]
 
 local config = {
-  toast_msg = nil,
+    toast_msg = nil,
   text = nil,
 }
 
