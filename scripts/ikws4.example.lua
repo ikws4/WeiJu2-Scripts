@@ -4,7 +4,7 @@
     name = "example",
     author = "ikws4",
     version = "1.0.0",
-    description = "A complete example to introduce how to write your own scripts."
+    description = "A complete example to show you how to write scripts."
   }
 @end
 --]]
