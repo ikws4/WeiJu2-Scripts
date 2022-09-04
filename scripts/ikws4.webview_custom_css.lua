@@ -30,11 +30,8 @@ M.setup = function(opts)
 
   local WebViewClient = import("android.webkit.WebViewClient")
   local WebView = import("android.webkit.WebView")
-  local Context = import("android.content.Context")
-  local Attributeset = import("android.util.AttributeSet")
   local String = import("java.lang.String")
   local Bitmap = import("android.graphics.Bitmap")
-  local Base64 = import("android.util.Base64")
 
   if config.css then
     hook {
