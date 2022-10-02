@@ -8,7 +8,7 @@
     example = [=[
       require("ikws4.webview_custom_css").setup {
         css = [[ 
-          body {
+          * {
             color: white;
             background: black;
           }
@@ -56,7 +56,7 @@ M.setup = function(opts)
     hook {
       class = WebViewClient,
       returns = void,
-      method = "onPageFinished",
+      method = "onPageCommitVisible",
       params = {
         WebView,
         String,
