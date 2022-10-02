@@ -3,7 +3,7 @@
   return {
     name = "webview_custom_css",
     author = "ikws4",
-    version = "1.0.0",
+    version = "1.0.1",
     description = "Inject custom css into WebView",
     example = [=[
       require("ikws4.webview_custom_css").setup {
