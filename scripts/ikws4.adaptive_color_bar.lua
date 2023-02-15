@@ -3,7 +3,7 @@
   return {
     name = "adaptive_color_bar",
     author = "ikws4",
-    version = "1.0.0",
+    version = "1.0.1",
     description = "Adaptive color for status and navigation bar",
     example = [=[
       require("ikws4.adaptive_color_bar").setup {
@@ -93,7 +93,7 @@ M.setup = function(opts)
             navigation_bar_height = decorView:getHeight() - visible_rect.bottom
           end
 
-          if not decor_view_bitmap or decor_view_bitmap:isRecycled() then
+          if not decor_view_bitmap or decor_view_bitmap:isRecycled() or not canvas then
             decor_view_bitmap = Bitmap:createBitmap(decorView:getWidth(), decorView:getHeight(), BitmapConfig.ARGB_8888)
             canvas = Canvas(decor_view_bitmap)
           end
